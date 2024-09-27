@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>luckynumber</title>
+    <style>
+        *{
+            padding: 0%;
+            margin: 0%;
+        }
+        body{
+            background-color: violet;
+        }
+        .d1{
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            margin: 0 auto;
+            margin-bottom: 2rem;
+
+        }
+        .c1{
+            background-color: transparent;
+            border-radius: 50%;
+            font-size: 30px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 10px rebeccapurple;
+            width: 50px;
+            padding: 40px;
+        }
+        #d2{
+            text-align: right;
+            font-size: 30px;
+        }
+#d3{
+    width: 80%;
+    display: flex;
+justify-content: space-between;
+margin: 0 auto;
+}
+#inp{
+    padding: 0.5rem 1rem;
+    font-size: large;
+    width: 280px;
+    border-radius: 1rem;
+    background-color: transparent;
+    border: none;
+    height: 30px;
+    background-color: lightgray;
+    box-shadow: 0 0 5px rgb(128, 128, 128);
+}
+#inp:focus{
+    border: none;
+    outline: none;
+}
+#btn{
+    width: 100px;
+    border-radius: 1rem;
+    border: none;
+    box-shadow: 0 0 6px gray;
+}
+.luckycontainer{
+    width: 550px;
+    background-color:darkseagreen;
+    margin: 5rem auto;
+    padding: 2rem  1rem;
+    border-radius: 2rem;
+    box-shadow: 0 0 10px blue;
+    border: none;
+}
+@media screen and (max-width:600px) {
+    .luckycontainer{
+        width: 290px;
+        padding: 1rem 1rem;
+    }
+    .c1{
+        width: 10px;
+        height: 10px;
+    }
+    .d1{
+        width: 100%;
+    }
+    #d3{
+        width: 100%;
+    }
+    #inp{
+        width: 180px;
+    }
+    #btn{
+        width: 70px;
+    }
+}
+    </style>
+</head>
+<body>
+    <div id="d2">Time Left:60</div>
+    <div class="luckycontainer">
+
+    <div class="d1">
+        <div id="a1" class="c1">0</div>
+        <div id="a2" class="c1">0</div>
+        <div id="a3" class="c1">0</div>
+    </div>
+    <div id="d3">
+        <input type="text" id="inp">
+        <button onclick="fun3()" id="btn">Start</button>
+    </div>
+</div>
+
+    <script>
+        var a,b,c ,tm=60,s3,s1,s2;
+        function fun1(){
+            a=parseInt(Math.random()*10);
+            b=parseInt(Math.random()*10);
+            c=parseInt(Math.random()*10);
+document.getElementById("a1").innerHTML=a;
+document.getElementById("a2").innerHTML=b;
+document.getElementById("a3").innerHTML=c;
+var s4=""+a+b+c;
+s3= document.getElementById("inp").value;
+if(s4==s3){
+    alert("You are winner");
+    clearInterval(s1);
+    clearInterval(s2);
+    tm=60;
+    document.getElementById("d2").innerHTML="Time Left: "+tm;
+
+    document.getElementById("inp").value="";
+    document.getElementById("a1").innerHTML=0;
+document.getElementById("a2").innerHTML=0;
+document.getElementById("a3").innerHTML=0;
+
+}
+        }
+       
+        function fun2(){
+            tm--;
+            if(tm==0){
+                clearInterval(s1);
+                clearInterval(s2);
+               document.getElementById("a1").innerHTML=0;
+document.getElementById("a2").innerHTML=0;
+document.getElementById("a3").innerHTML=0;
+document.getElementById("inp").value="";
+
+            }
+            document.getElementById("d2").innerHTML="Time Left: "+tm;
+        }
+       function fun3(){
+       
+        s3= document.getElementById("inp").value;
+var s7=parseInt(s3);
+        if(s3==""||s7>999){
+        alert("enter three digit number");
+       document.getElementById("inp").focus();
+      
+        }
+      else
+        if(tm!=0){
+            s1=  setInterval("fun1()",10);
+            s2= setInterval("fun2()",1000);
+        }  
+
+         
+       
+    }
+
+
+    </script>
+</body>
+</html>
